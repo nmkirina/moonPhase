@@ -1,0 +1,24 @@
+#circle {
+	width: 100px;
+	height: 100px;
+	background: yellow;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+}
+
+.moon{
+    position: relative;
+}
+
+.circle_black {
+	width: 100px;
+	height: 100px;
+	background: #f5f5f5;
+        position: absolute;
+        top: 0;
+        left: 0;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+}
