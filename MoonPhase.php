@@ -10,23 +10,11 @@ class MoonPhaze {
     
     public $year;
     public $month;
-    public $day;
+    public $day;    
+    public $error;
     private $dateArray;
     private $moonYearNumber;
     private $moonAge;
-    public $error;
-
-    public function __construct($date) {
-        $this->explodeDate($date);
-        $this->error = false;
-        if ($this->validation()){
-            $this->month = $this->dateArray[0];
-            $this->day = $this->dateArray[1];
-            $this->year = $this->dateArray[2];
-            $this->moonYearNumber = $this->calculateMoonYearNumber();
-            $this->moonAge = $this->calculateMoonAge();
-        } 
-    }
 
     private function explodeDate ($date){
         $this->dateArray = explode('/', $date);
@@ -38,12 +26,12 @@ class MoonPhaze {
             return true;
         } 
         
-        $this->error = true;
         $this->error();
         return false;
     }
 
     private function error (){
+        $this->error = true;
         session_start();
         session_unset();
         $_SESSION['error'] = true;
@@ -89,6 +77,18 @@ class MoonPhaze {
                 return $i;
             }
         }
+    }
+    
+    public function __construct($date) {
+        $this->explodeDate($date);
+        $this->error = false;
+        if ($this->validation()){
+            $this->month = $this->dateArray[0];
+            $this->day = $this->dateArray[1];
+            $this->year = $this->dateArray[2];
+            $this->moonYearNumber = $this->calculateMoonYearNumber();
+            $this->moonAge = $this->calculateMoonAge();
+        } 
     }
 }
 
